@@ -1,0 +1,10 @@
+Bibliotecas utilizadas
+
+numpy 
+scipy 
+pandas 
+matplotlib 
+seaborn 
+streamlit 
+requests 
+plotly
