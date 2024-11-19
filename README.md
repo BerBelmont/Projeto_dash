@@ -104,15 +104,23 @@ O Streamlit abrirá automaticamente o dashboard em seu navegador padrão. Caso n
 Utilize os filtros na barra lateral para interagir com os dados:
 
 Filtrar por Gênero: Selecione um ou mais gêneros para visualizar séries correspondentes.
+
 Intervalo de Anos de Lançamento: Defina o período dos anos de lançamento das séries.
+
 Faixa de Avaliação: Ajuste a faixa de avaliação das séries que deseja analisar.
+
 Explore as diferentes abas disponíveis:
 
 Avaliações: Visualize a distribuição das avaliações das séries.
+
 Gêneros: Descubra os gêneros mais populares entre as séries selecionadas.
+
 Temporadas x Avaliação: Analise a relação entre o número de temporadas e a avaliação das séries.
+
 Avaliação por Ano: Observe como a avaliação média das séries evoluiu ao longo dos anos.
+
 Séries por País: Veja quais países mais produzem séries entre as selecionadas.
+
 Destaque: Breaking Bad: Explore em detalhes a série "Breaking Bad" e entenda por que ela se destaca.
 
 # Observações Importantes
