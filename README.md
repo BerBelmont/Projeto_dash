@@ -66,43 +66,18 @@ Com o ambiente virtual ativado, instale as dependências necessárias:
 ```
 pip install -r libs.txt
 ```
-####### Nota: Se o arquivo requirements.txt não estiver disponível, instale manualmente as seguintes bibliotecas:
+###### Nota: Se o arquivo requirements.txt não estiver disponível, instale manualmente as seguintes bibliotecas:
 
 ```
 pip install numpy scipy pandas matplotlib seaborn streamlit requests plotly
 ```
 7. Configurar a Chave de API do TMDB
-Para que o projeto acesse os dados do TMDB, é necessário configurar sua chave de API.
+Para que o projeto acesse os dados do TMDB, é necessário configurar sua chave de API. Para isso acesse o site do TMDB, crie uma conta e em configurações selecione API e faça um request para uma KEY.
 
-Opção 1: Usando Variáveis de Ambiente
-No Windows (Prompt de Comando):
+Com a chave criada substitua os espaços nos códigos do src e do dashboard em que está escrito 'sua-api-key' pela sua chave de API real.
 
-```
-set TMDB_API_KEY=SUA_CHAVE_DE_API_DO_TMDB
-```
-No Linux ou macOS (Terminal):
 
-```
-export TMDB_API_KEY=SUA_CHAVE_DE_API_DO_TMDB
-```
-Substitua SUA_CHAVE_DE_API_DO_TMDB pela sua chave de API real.
-
-Opção 2: Criando um Arquivo .env
-Crie um arquivo chamado .env na raiz do projeto e adicione a seguinte linha:
-```
-TMDB_API_KEY=SUA_CHAVE_DE_API_DO_TMDB
-```
-8. Atualizar os Arquivos main.py e dashboard.py
-Certifique-se de que os arquivos main.py e dashboard.py estão configurados para ler a chave de API da variável de ambiente.
-
-Exemplo de como obter a chave de API nos arquivos:
-
-```
-import os
-
-API_KEY = os.getenv('TMDB_API_KEY')
-```
-9. Executar o Script para Coletar os Dados
+8. Executar o Script para Coletar os Dados
 Antes de iniciar o dashboard, é necessário coletar os dados das séries executando o script main.py:
 
 ```
@@ -113,7 +88,7 @@ Este script irá:
 Utilizar a API do TMDB para obter dados das top séries de TV.
 Salvar os dados em um arquivo CSV chamado series_data.csv dentro da pasta src.
 
-10. Executar o Dashboard
+9. Executar o Dashboard
 Inicie o dashboard utilizando o Streamlit:
 
 ```
@@ -123,7 +98,7 @@ Se o arquivo dashboard.py estiver em outro diretório, ajuste o caminho conforme
 
 O Streamlit abrirá automaticamente o dashboard em seu navegador padrão. Caso não abra, acesse http://localhost:8501 em seu navegador.
 
-11. Explorar o Dashboard
+10. Explorar o Dashboard
 Utilize os filtros na barra lateral para interagir com os dados:
 
 Filtrar por Gênero: Selecione um ou mais gêneros para visualizar séries correspondentes.
