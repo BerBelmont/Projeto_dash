@@ -72,7 +72,9 @@ pip install -r libs.txt
 pip install numpy scipy pandas matplotlib seaborn streamlit requests plotly
 ```
 7. Configurar a Chave de API do TMDB
-Para que o projeto acesse os dados do TMDB, é necessário configurar sua chave de API. Para isso acesse o site do TMDB, crie uma conta e em configurações selecione API e faça um request para uma KEY.
+Para que o projeto acesse os dados do TMDB, é necessário configurar sua chave de API.
+
+Para isso acesse o site do TMDB, crie uma conta e em configurações selecione API e faça um request para uma KEY.
 
 Com a chave criada substitua os espaços nos códigos do src e do dashboard em que está escrito 'sua-api-key' pela sua chave de API real.
 
