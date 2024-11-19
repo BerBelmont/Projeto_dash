@@ -12,16 +12,17 @@ Chave de API do TMDB para acessar os dados das séries. Você pode obter uma cha
 Clone este repositório em sua máquina local:
 
 ```
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/BerBelmont/Projeto_dash
 ```
 
 Substitua seu-usuario e seu-repositorio pelo nome de usuário e nome do repositório correspondentes.
 
 2. Navegar até o Diretório do Projeto
+   
 Entre no diretório do projeto:
 
 ```
-cd seu-repositorio
+cd 'repositório'
 ```
 
 3. Remover o Ambiente Virtual Existente
