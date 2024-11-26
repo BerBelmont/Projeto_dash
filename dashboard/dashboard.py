@@ -116,7 +116,7 @@ def get_overview(api_key, serie_id):
 # Cria abas para organizar os gráficos e análises
 tab1, tab_new, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     'Avaliações', 
-    'Top 10 Séries',  # Nova aba
+    'Top 10 Séries', 
     'Gêneros', 
     'Temporadas x Avaliação', 
     'Avaliação por Ano', 
@@ -165,7 +165,7 @@ with tab_new:
         with col:
             if st.button('', key=f'poster_{idx}'):
                 st.session_state['selected_serie_id'] = serie_id
-            st.image(poster, caption=titulo, use_container_width=True)  # Alteração aqui
+            st.image(poster, caption=titulo, use_container_width=True)  
 
     # Exibir os detalhes da série selecionada
     if 'selected_serie_id' in st.session_state:
