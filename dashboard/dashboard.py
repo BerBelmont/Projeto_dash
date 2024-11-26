@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Chave de API do TMDB 
-API_KEY = 'sua-api-key'
+API_KEY = 'cd54cd3d7a97a19dac6fc20dd8041a81'
 
 # Determinar o diretório base
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -84,10 +84,10 @@ df_filtrado = df_filtrado[(df_filtrado['ano_lancamento'] >= ano_min) & (df_filtr
 # Filtra pela faixa de avaliação
 df_filtrado = df_filtrado[(df_filtrado['avaliacao'] >= avaliacao_min) & (df_filtrado['avaliacao'] <= avaliacao_max)]
 
-# Função para obter o poster da série usando a API do TMDB
-def get_poster_url(api_key, serie_id):
+# Funções auxiliares para obter dados da API do TMDB
+def get_poster_url(api_key, serie_id, size='w200'):
     base_url = 'https://api.themoviedb.org/3/tv/{}'
-    poster_base_url = 'https://image.tmdb.org/t/p/w500'
+    poster_base_url = f'https://image.tmdb.org/t/p/{size}'
     url = base_url.format(serie_id)
     params = {
         'api_key': api_key,
@@ -101,9 +101,22 @@ def get_poster_url(api_key, serie_id):
     else:
         return None
 
+def get_overview(api_key, serie_id):
+    base_url = 'https://api.themoviedb.org/3/tv/{}'
+    url = base_url.format(serie_id)
+    params = {
+        'api_key': api_key,
+        'language': 'pt-BR'
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+    overview = data.get('overview')
+    return overview
+
 # Cria abas para organizar os gráficos e análises
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab_new, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     'Avaliações', 
+    'Top 10 Séries',  # Nova aba
     'Gêneros', 
     'Temporadas x Avaliação', 
     'Avaliação por Ano', 
@@ -124,6 +137,59 @@ with tab1:
     )
     # Exibe o gráfico
     st.plotly_chart(fig, use_container_width=True)
+
+with tab_new:
+    st.header('Top 10 Séries')
+    st.write('Confira as Top 10 séries com as melhores avaliações.')
+
+    # Obter as Top 10 séries com base na avaliação
+    top_10_series = df_filtrado.sort_values(by='avaliacao', ascending=False).head(10)
+
+    # Criar listas para armazenar URLs das capas e informações das séries
+    posters = []
+    titulos = []
+    ids = []
+
+    for _, row in top_10_series.iterrows():
+        poster_url = get_poster_url(API_KEY, row['id'])
+        if poster_url:
+            posters.append(poster_url)
+            titulos.append(row['titulo'])
+            ids.append(row['id'])
+
+    # Exibir as imagens em uma grade
+    num_cols = 5  # Número de colunas na grade
+    cols = st.columns(num_cols)
+    for idx, (poster, titulo, serie_id) in enumerate(zip(posters, titulos, ids)):
+        col = cols[idx % num_cols]
+        with col:
+            if st.button('', key=f'poster_{idx}'):
+                st.session_state['selected_serie_id'] = serie_id
+            st.image(poster, caption=titulo, use_container_width=True)  # Alteração aqui
+
+    # Exibir os detalhes da série selecionada
+    if 'selected_serie_id' in st.session_state:
+        serie_id = st.session_state['selected_serie_id']
+        serie = df[df['id'] == serie_id].iloc[0]
+
+        st.subheader(serie['titulo'])
+
+        # Obter o poster em tamanho maior
+        poster_url = get_poster_url(API_KEY, serie_id, size='w500')
+        if poster_url:
+            st.image(poster_url, width=300)
+
+        st.write(f"**Avaliação:** {serie['avaliacao']}")
+        st.write(f"**Gêneros:** {', '.join(serie['generos'])}")
+        st.write(f"**Número de Temporadas:** {int(serie['num_temporadas'])}")
+        st.write(f"**Número de Episódios:** {int(serie['num_episodios'])}")
+        st.write(f"**Data de Lançamento:** {serie['data_lancamento'].strftime('%d/%m/%Y')}")
+        st.write(f"**País(es) de Origem:** {', '.join(serie['pais_origem'])}")
+
+        st.write('**Sinopse:**')
+        overview = get_overview(API_KEY, serie_id)
+        if overview:
+            st.write(overview)
 
 with tab2:
     st.header('Gêneros Mais Populares')
@@ -227,7 +293,7 @@ with tab6:
         poster_url = get_poster_url(API_KEY, serie['id'])
         if poster_url:
             # Exibe a imagem do poster
-            st.image(poster_url, width=300)
+            st.image(poster_url, width=300)  # Aqui não é necessário usar 'use_column_width' ou 'use_container_width'
         
         # Mostrar detalhes da série
         st.write(f"**Avaliação:** {serie['avaliacao']}")
@@ -238,19 +304,6 @@ with tab6:
         st.write(f"**País(es) de Origem:** {', '.join(serie['pais_origem'])}")
         
         st.write('**Sinopse:**')
-        # Função para obter a sinopse da série usando a API do TMDB
-        def get_overview(api_key, serie_id):
-            base_url = 'https://api.themoviedb.org/3/tv/{}'
-            url = base_url.format(serie_id)
-            params = {
-                'api_key': api_key,
-                'language': 'pt-BR'
-            }
-            response = requests.get(url, params=params)
-            data = response.json()
-            overview = data.get('overview')
-            return overview
-        
         # Obtém a sinopse da série
         overview = get_overview(API_KEY, serie['id'])
         if overview:
@@ -261,4 +314,3 @@ with tab6:
     else:
         # Mensagem caso Breaking Bad não seja encontrada nos dados
         st.write('Breaking Bad não foi encontrada nos dados.')
-
