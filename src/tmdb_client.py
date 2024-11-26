@@ -3,7 +3,7 @@ import requests
 class TMDBClient:
     def __init__(self, api_key):
         # Inicializa o cliente TMDB com a chave de API f
-        self.api_key = 'cd54cd3d7a97a19dac6fc20dd8041a81' 
+        self.api_key = 'sua-api-key' 
         self.base_url = 'https://api.themoviedb.org/3'     
 
     def get_top_series(self, page=1):

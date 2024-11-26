@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # Chave de API do TMDB 
-API_KEY = 'cd54cd3d7a97a19dac6fc20dd8041a81'
+API_KEY = 'sua-api-key'
 
 # Determinar o diretório base
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -4,7 +4,7 @@ from data_analyzer import DataAnalyzer
 
 def main():
     # Chave de API do TMDB
-    API_KEY = 'cd54cd3d7a97a19dac6fc20dd8041a81'
+    API_KEY = 'sua-api-key'
 
     # Instanciar o cliente da API
     tmdb_client = TMDBClient(API_KEY)
