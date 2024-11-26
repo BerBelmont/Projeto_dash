@@ -15,7 +15,6 @@ Clone este repositório em sua máquina local:
 git clone https://github.com/BerBelmont/Projeto_dash
 ```
 
-Substitua seu-usuario e seu-repositorio pelo nome de usuário e nome do repositório correspondentes.
 
 2. Navegar até o Diretório do Projeto
    
@@ -40,7 +39,11 @@ No Linux ou macOS:
 rm -rf env
 ```
 
-4. Criar um Novo Ambiente Virtual
+4. Criar um Novo Ambiente Virtual 
+
+##### Esse passo foi feito para evitar conflitos que podem acontecer na hora de executar o dashboard
+#### **Caso possua apenas uma versão do Python em sua máquina pode pular para o passo 6.**
+
 Crie um novo ambiente virtual chamado env:
 
 
@@ -48,6 +51,7 @@ Crie um novo ambiente virtual chamado env:
 python -m venv env
 ```
 5. Ativar o Ambiente Virtual
+   
 Ative o ambiente virtual recém-criado:
 
 No Windows:
@@ -102,6 +106,7 @@ Se o arquivo dashboard.py estiver em outro diretório, ajuste o caminho conforme
 O Streamlit abrirá automaticamente o dashboard em seu navegador padrão. Caso não abra, acesse http://localhost:8501 em seu navegador.
 
 10. Explorar o Dashboard
+    
 Utilize os filtros na barra lateral para interagir com os dados:
 
 Filtrar por Gênero: Selecione um ou mais gêneros para visualizar séries correspondentes.
