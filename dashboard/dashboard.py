@@ -19,7 +19,7 @@ API_KEY = 'cd54cd3d7a97a19dac6fc20dd8041a81'
 # Determinar o diretório base
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Construir o caminho para o arquivo CSV na pasta 'src'
+# Criando caminho para o arquivo CSV na pasta 'src'
 csv_path = os.path.join(BASE_DIR, '..', 'src', 'series_data.csv')
 
 @st.cache_data  # Decorador para cachear a função e evitar recarregamentos desnecessários
