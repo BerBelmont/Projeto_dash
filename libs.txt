@@ -1,5 +1,3 @@
-Bibliotecas utilizadas
-
 numpy 
 scipy 
 pandas 

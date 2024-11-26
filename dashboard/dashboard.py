@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Construir o caminho para o arquivo CSV na pasta 'src'
 csv_path = os.path.join(BASE_DIR, '..', 'src', 'series_data.csv')
 
-@st.cache  # Decorador para cachear a função e evitar recarregamentos desnecessários
+@st.cache_data  # Decorador para cachear a função e evitar recarregamentos desnecessários
 def load_data():
     # Carrega os dados do arquivo CSV
     df = pd.read_csv(csv_path)
