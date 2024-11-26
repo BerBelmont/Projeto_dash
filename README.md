@@ -95,6 +95,8 @@ Este script irá:
 Utilizar a API do TMDB para obter dados das top séries de TV.
 Salvar os dados em um arquivo CSV chamado series_data.csv dentro da pasta src.
 
+#### Quando clonar o arquivo desse diretório, você estará clonando um arquivo CSV já com as top 100 séries por nota até a data atual (18/11/2024). Caso queira fazer uma visualização diferente, atualize o código para isso.
+
 9. Executar o Dashboard
 Inicie o dashboard utilizando o Streamlit:
 
